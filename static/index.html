@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trippy — 信息聚合助手</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+</head>
+<body>
+  <div class="app">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">✈️ Trippy</div>
+      <div class="mode-tabs">
+        <button class="tab active" data-mode="food">🍜 美食</button>
+        <button class="tab" data-mode="trip">✈️ 行程</button>
+        <button class="tab" data-mode="guide">🗺️ 攻略</button>
+      </div>
+      <button class="history-btn" id="historyBtn" title="搜索历史">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </button>
+    </header>
+
+    <!-- Chat Area -->
+    <main class="chat-area" id="chatArea">
+
+      <!-- 欢迎页 -->
+      <div class="welcome-screen" id="welcomeScreen">
+        <div class="welcome-icon">✈️</div>
+        <h2>你好，我是 Trippy</h2>
+        <p>你的本地生活信息助手，帮你找美食、规划行程、了解游玩攻略</p>
+        <div class="suggestion-pills">
+          <button class="pill" data-msg="附近有什么好吃的川菜馆？">🍜 附近美食</button>
+          <button class="pill" data-msg="帮我规划一个杭州3天2夜的行程">✈️ 帮我规划</button>
+          <button class="pill" data-msg="厦门鼓浪屿有什么必去的景点？">🗺️ 查看攻略</button>
+        </div>
+      </div>
+
+      <!-- 消息列表 -->
+      <div class="messages" id="messages"></div>
+
+      <!-- 加载骨架屏 -->
+      <div class="skeleton-screen" id="skeletonScreen" style="display:none">
+        <div class="skeleton-msg user"></div>
+        <div class="skeleton-status" id="skeletonStatus">正在思考...</div>
+        <div class="skeleton-cards">
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Input Bar -->
+    <div class="input-bar">
+      <input
+        type="text"
+        id="messageInput"
+        placeholder="说说你想去哪、想吃什么..."
+        autocomplete="off"
+      >
+      <button class="send-btn" id="sendBtn">➤</button>
+    </div>
+
+    <!-- History Drawer -->
+    <div class="history-overlay" id="historyOverlay"></div>
+    <div class="history-drawer" id="historyDrawer">
+      <div class="history-drawer-header">
+        <span>搜索历史</span>
+        <button class="history-drawer-close" id="historyCloseBtn">×</button>
+      </div>
+      <div class="history-list" id="historyList">
+        <div class="history-empty" id="historyEmpty">暂无搜索记录</div>
+      </div>
+    </div>
+
+    <!-- Detail Modal -->
+    <div class="detail-modal" id="detailModal" style="display:none">
+      <div class="detail-modal-content" id="detailModalContent">
+        <button class="detail-close-btn" id="detailCloseBtn">×</button>
+        <div id="detailModalBody"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="/static/js/app.js?v=9"></script>
+</body>
+</html>
